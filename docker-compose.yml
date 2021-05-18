@@ -1,0 +1,13 @@
+services:
+    api1:
+      container_name: Api1
+      build: ./api1
+      ports:
+        - "3333:80"
+    api2:
+      container_name: Api2
+      build: ./Api2
+      ports:
+        - "4444:80"
+      depends_on:
+        - api1
