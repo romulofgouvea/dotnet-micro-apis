@@ -13,6 +13,17 @@ namespace Api1.Tests
 
             //assert
             Assert.Equal(0.01, f.Value);
+            Assert.True(f.IsValid);
+        }
+
+        [Fact]
+        public void When_Create_Interest_Rates_Negative_Shoud_Be_Invalid()
+        {
+            //act
+            var f = new InterestRates(-1);
+
+            //assert
+            Assert.False(f.IsValid);
         }
     }
 }
