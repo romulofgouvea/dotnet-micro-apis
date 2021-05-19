@@ -14,7 +14,7 @@ namespace Api2.Application.Controllers
         [HttpGet]
         public IActionResult ShowMeTheCode()
         {
-            return Redirect("https://github.com/romulofgouvea/dotnet-ocelot");
+            return Redirect("https://github.com/romulofgouvea/dotnet-micro-apis");
         }
     }
 }
