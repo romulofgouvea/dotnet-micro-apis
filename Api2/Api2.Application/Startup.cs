@@ -17,13 +17,14 @@ namespace Api2.Application
         }
 
         public IConfiguration Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
             //DI
-            services.AddTransient<IServicesApiInterestsRates, ApiInterestRatesComunicationServices>();
+            services.AddTransient<IServiceCalculateInterestRates, CalculateInterestRatesService>();
+            services.AddTransient<IServiceApiInterestsRates, ApiInterestRatesComunicationService>();
             services.AddSingleton(Configuration);
         }
 

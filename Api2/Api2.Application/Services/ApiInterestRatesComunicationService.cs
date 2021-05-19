@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Api2.Application.Models;
+﻿using Api2.Application.Models;
 using Api2.Application.Repositories;
 using Newtonsoft.Json;
+using System.IO;
+using System.Net;
 
 namespace Api2.Application.Services
 {
-    public class ApiInterestRatesComunicationServices : IServicesApiInterestsRates
+    public class ApiInterestRatesComunicationService : IServiceApiInterestsRates
     {
         public double FindValueInterestRates(string urlBaseApi)
         {

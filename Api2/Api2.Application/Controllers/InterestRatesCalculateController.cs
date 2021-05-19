@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Api2.Application.Models;
 using Api2.Application.Repositories;
-using Api2.Application.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace Api2.Application.Controllers
@@ -19,14 +14,23 @@ namespace Api2.Application.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         public decimal Get(
             [FromQuery(Name = "valorinicial")] decimal initialValue,
-            [FromQuery(Name = "meses")] int months,
-            [FromServices] IServicesApiInterestsRates apiInterest,
+            [FromQuery(Name = "meses")] int mounths,
+            [FromServices] IServiceApiInterestsRates apiInterestService,
+            [FromServices] IServiceCalculateInterestRates calculateInterestRatesService,
             [FromServices] IConfiguration configuration)
         {
             string baseUrlApi = configuration.GetValue<string>("Integrations:ApiInterestsRates");
-            var fee = apiInterest.FindValueInterestRates(baseUrlApi);
+            var tax = apiInterestService.FindValueInterestRates(baseUrlApi);
 
-            var recipe = initialValue * Convert.ToDecimal(Math.Pow((1 + fee), months));
+            var compoundInterest = new MCompoundInterest
+            {
+                InicialValue = initialValue,
+                Mounths = mounths,
+                Tax = tax
+            };
+
+            var recipe = calculateInterestRatesService
+                .CalculateCompoundInterest(compoundInterest);
 
             return decimal.Round(recipe, 2);
         }
