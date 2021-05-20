@@ -1,7 +1,7 @@
 ﻿using Api2.Application.Models;
 using Xunit;
 
-namespace Api2.Tests.Models
+namespace Api2.Tests.Units.Models
 {
     public class MInteretsRatesTests
     {

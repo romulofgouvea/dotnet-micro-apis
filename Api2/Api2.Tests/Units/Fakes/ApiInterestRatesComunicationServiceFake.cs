@@ -1,7 +1,7 @@
 ﻿using Api2.Application.Models;
 using Api2.Application.Repositories;
 
-namespace Api2.Tests.Fakes
+namespace Api2.Tests.Units.Fakes
 {
     public class ApiInterestRatesComunicationServiceFake : IServiceApiInterestsRates
     {

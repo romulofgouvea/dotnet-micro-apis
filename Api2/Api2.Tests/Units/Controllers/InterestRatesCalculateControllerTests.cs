@@ -1,10 +1,10 @@
 ﻿using Api2.Application.Controllers;
 using Api2.Application.Services;
-using Api2.Tests.Fakes;
+using Api2.Tests.Units.Fakes;
 using Microsoft.Extensions.Configuration;
 using Xunit;
 
-namespace Api2.Tests.Controllers
+namespace Api2.Tests.Units.Controllers
 {
     public class InterestRatesCalculateControllerTests
     {

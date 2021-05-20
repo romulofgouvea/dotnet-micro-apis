@@ -27,9 +27,9 @@ namespace Api2.Application
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
             //DI
+            services.AddSingleton(Configuration);
             services.AddTransient<IServiceCalculateInterestRates, CalculateInterestRatesService>();
             services.AddTransient<IServiceApiInterestsRates, ApiInterestRatesComunicationService>();
-            services.AddSingleton(Configuration);
 
             //Swagger
             services.AddSwaggerGen(c =>
