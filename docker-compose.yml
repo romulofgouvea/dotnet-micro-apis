@@ -2,12 +2,32 @@ services:
     api1:
       container_name: Api1
       build: ./api1
+      environment:
+        - ASPNETCORE_URLS=https://+:443;http://+80
+        - ASPNETCORE_Kestrel__Certificates__Default__Password=123
+        - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+        - ASPNETCORE_HTTPS_PORT=3334
+        - ASPNETCORE_ENVIRONMENT=Docker
       ports:
         - "3333:80"
+        - "3334:443"
+      volumes:
+        - ~/.aspnet/https:/https:ro
+
     api2:
       container_name: Api2
       build: ./Api2
+      environment:
+        - ASPNETCORE_URLS=https://+:443;http://+80
+        - ASPNETCORE_Kestrel__Certificates__Default__Password=123
+        - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+        - ASPNETCORE_HTTPS_PORT=3334
+        - ASPNETCORE_ENVIRONMENT=Docker
       ports:
         - "4444:80"
+        - "4445:443"
+      volumes:
+        - ~/.aspnet/https:/https:ro
+
       depends_on:
         - api1
