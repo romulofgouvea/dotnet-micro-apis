@@ -80,6 +80,7 @@ Exemplo de consulta na API 2: [https://localhost:4445/calculajuros?valorinicial=
 
 ## Testes
 
+
 Caso queira executar os testes unitários e de integração das API 's entre no diretório e utilize o comando:
 
 Api 1
@@ -91,3 +92,5 @@ Api2
 ```
 dotnet test ./Api2/Api2.Tests/
 ```
+
+> Atenção: é necessário que os containers esteja rodando para o funcionamento correto dos testes de integração
