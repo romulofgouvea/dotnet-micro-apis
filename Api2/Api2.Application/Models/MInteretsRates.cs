@@ -12,7 +12,7 @@ namespace Api2.Application.Models
         {
             var contract = new Contract<Notification>()
                 .Requires()
-                .IsGreaterOrEqualsThan(Value, 0, "Value", "O valor não pode ser negativo.");
+                .IsLowerOrEqualsThan(Value, 0, "Value", "O valor não pode ser negativo.");
 
             AddNotifications(contract);
 

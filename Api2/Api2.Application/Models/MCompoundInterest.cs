@@ -14,9 +14,9 @@ namespace Api2.Application.Models
         {
             var contract = new Contract<Notification>()
                 .Requires()
-                .IsGreaterOrEqualsThan(InicialValue, 0, "InicialValue", "O valor inicial não pode ser negativo.")
-                .IsGreaterOrEqualsThan(Tax, 0, "Tax", "O taxa de juros não pode ser negativo.")
-                .IsGreaterThan(Mounths, 0, "Mounths", "O mes deve ser maior que um.");
+                .IsLowerOrEqualsThan(InicialValue, 0, "InicialValue", "O valor inicial não pode ser negativo.")
+                .IsLowerOrEqualsThan(Tax, 0, "Tax", "O taxa de juros não pode ser negativo.")
+                .IsGreaterThan(Mounths, 0, "Mounths", "O mes deve ser maior que zero.");
 
             AddNotifications(contract);
 
