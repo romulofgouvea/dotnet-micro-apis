@@ -59,7 +59,16 @@ Repita o mesmo processo para a API 2, alterando os nomes e os endpoints informad
 
 A execução tem como pré-requisito a instalação da ferramenta [Docker](https://www.docker.com/products/docker-desktop).
 
-Após a instalação, entre na pasta principal onde se encontra o arquivo `docker-compose.yml` e execute o comando abaixo para iniciar os containers.
+Após a instalação, gerar os certificados para o funcionamento do container com o https:
+
+Você precisará saber a pasta do seu usuário no windows, aperte a tecla Windows+R e cole o valor `%USERPROFILE%` e execute. Após isso abrirá a sua pasta, copie o caminho dela e cole no lugar do `<caminho-do-user-profile>` e execute o comando no seu terminal:
+
+```
+dotnet dev-certs https -ep <caminho-do-user-profile>\.aspnet\https\aspnetapp.pfx -p
+dotnet dev-certs https --trust
+```
+
+Após isso, entre na pasta principal onde se encontra o arquivo `docker-compose.yml` e execute o comando abaixo para iniciar os containers.
 
 ```
 docker-compose -f "docker-compose.yml" up -d --build
@@ -68,3 +77,17 @@ docker-compose -f "docker-compose.yml" up -d --build
 Após o comando as API 's 1 e 2 via https estarão disponíveis nas portas `3334` e `4445` respectivamente.
 
 Exemplo de consulta na API 2: [https://localhost:4445/calculajuros?valorinicial=100&meses=5](https://localhost:4445/calculajuros?valorinicial=100&meses=5)
+
+## Testes
+
+Caso queira executar os testes unitários e de integração das API 's entre no diretório e utilize o comando:
+
+Api 1
+```
+dotnet test ./Api1/Api1.Tests/
+```
+
+Api2
+```
+dotnet test ./Api2/Api2.Tests/
+```
