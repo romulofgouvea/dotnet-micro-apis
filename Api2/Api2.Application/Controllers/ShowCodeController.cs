@@ -6,6 +6,9 @@ namespace Api2.Application.Controllers
     [Route("showmethecode")]
     public class ShowCodeController : Controller
     {
+        /// <summary>
+        /// Redirects to the code on Github
+        /// </summary>
         [HttpGet]
         public IActionResult ShowMeTheCode()
         {

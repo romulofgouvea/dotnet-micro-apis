@@ -10,8 +10,17 @@ namespace Api2.Application.Controllers
     [Route("calculajuros")]
     public class InterestRatesCalculateController : Controller
     {
+        /// <summary>
+        /// Calculates compound interest
+        /// </summary>
+        /// <param name="initialValue"></param>
+        /// <param name="mounths"></param>
+        /// <param name="apiInterestService"></param>
+        /// <param name="calculateInterestRatesService"></param>
+        /// <param name="configuration"></param>
+        /// <returns>A decimal value calculated</returns>
         [HttpGet]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(decimal), StatusCodes.Status200OK)]
         public decimal Get(
             [FromQuery(Name = "valorinicial")] decimal initialValue,
             [FromQuery(Name = "meses")] int mounths,
